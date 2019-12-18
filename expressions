@@ -1,0 +1,8 @@
+-- pull slug from url
+SELECT 
+regexp_extract(url, r'\/([a-z0-9_-]*)$') AS slug_option_1,
+regexp_extract(url, r'/([a-z0-9_-]*)/?$' ) AS slug_option_2,
+ARRAY_REVERSE(SPLIT(RTRIM(live_link, '/'), '/'))[SAFE_OFFSET(0)] AS slug_option_3
+FROM
+table
+
